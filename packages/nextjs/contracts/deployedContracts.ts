@@ -6,19 +6,73 @@ import { GenericContractsDeclaration } from "~~/utils/scaffold-eth/contract";
 
 const deployedContracts = {
   31337: {
-    YourContract: {
-      address: "0xAE246E208ea35B3F23dE72b697D47044FC594D5F",
+    ERC721AUpgradeable: {
+      address: "0xB17936E09cd1A6f032735A052d9Ef21Bd7530eCB",
       abi: [
         {
-          inputs: [
-            {
-              internalType: "address",
-              name: "_owner",
-              type: "address",
-            },
-          ],
-          stateMutability: "nonpayable",
-          type: "constructor",
+          inputs: [],
+          name: "ApprovalCallerNotOwnerNorApproved",
+          type: "error",
+        },
+        {
+          inputs: [],
+          name: "ApprovalQueryForNonexistentToken",
+          type: "error",
+        },
+        {
+          inputs: [],
+          name: "BalanceQueryForZeroAddress",
+          type: "error",
+        },
+        {
+          inputs: [],
+          name: "MintERC2309QuantityExceedsLimit",
+          type: "error",
+        },
+        {
+          inputs: [],
+          name: "MintToZeroAddress",
+          type: "error",
+        },
+        {
+          inputs: [],
+          name: "MintZeroQuantity",
+          type: "error",
+        },
+        {
+          inputs: [],
+          name: "OwnerQueryForNonexistentToken",
+          type: "error",
+        },
+        {
+          inputs: [],
+          name: "OwnershipNotInitializedForExtraData",
+          type: "error",
+        },
+        {
+          inputs: [],
+          name: "TransferCallerNotOwnerNorApproved",
+          type: "error",
+        },
+        {
+          inputs: [],
+          name: "TransferFromIncorrectOwner",
+          type: "error",
+        },
+        {
+          inputs: [],
+          name: "TransferToNonERC721ReceiverImplementer",
+          type: "error",
+        },
+        {
+          inputs: [],
+          name: "TransferToZeroAddress",
+          type: "error",
+        },
+        {
+          inputs: [],
+          name: "URIQueryForNonexistentToken",
+          type: "error",
         },
         {
           anonymous: false,
@@ -26,34 +80,189 @@ const deployedContracts = {
             {
               indexed: true,
               internalType: "address",
-              name: "greetingSetter",
+              name: "owner",
+              type: "address",
+            },
+            {
+              indexed: true,
+              internalType: "address",
+              name: "approved",
+              type: "address",
+            },
+            {
+              indexed: true,
+              internalType: "uint256",
+              name: "tokenId",
+              type: "uint256",
+            },
+          ],
+          name: "Approval",
+          type: "event",
+        },
+        {
+          anonymous: false,
+          inputs: [
+            {
+              indexed: true,
+              internalType: "address",
+              name: "owner",
+              type: "address",
+            },
+            {
+              indexed: true,
+              internalType: "address",
+              name: "operator",
               type: "address",
             },
             {
               indexed: false,
-              internalType: "string",
-              name: "newGreeting",
-              type: "string",
-            },
-            {
-              indexed: false,
               internalType: "bool",
-              name: "premium",
+              name: "approved",
               type: "bool",
+            },
+          ],
+          name: "ApprovalForAll",
+          type: "event",
+        },
+        {
+          anonymous: false,
+          inputs: [
+            {
+              indexed: true,
+              internalType: "uint256",
+              name: "fromTokenId",
+              type: "uint256",
             },
             {
               indexed: false,
               internalType: "uint256",
-              name: "value",
+              name: "toTokenId",
               type: "uint256",
             },
+            {
+              indexed: true,
+              internalType: "address",
+              name: "from",
+              type: "address",
+            },
+            {
+              indexed: true,
+              internalType: "address",
+              name: "to",
+              type: "address",
+            },
           ],
-          name: "GreetingChange",
+          name: "ConsecutiveTransfer",
           type: "event",
         },
         {
+          anonymous: false,
+          inputs: [
+            {
+              indexed: true,
+              internalType: "address",
+              name: "from",
+              type: "address",
+            },
+            {
+              indexed: true,
+              internalType: "address",
+              name: "to",
+              type: "address",
+            },
+            {
+              indexed: true,
+              internalType: "uint256",
+              name: "tokenId",
+              type: "uint256",
+            },
+          ],
+          name: "Transfer",
+          type: "event",
+        },
+        {
+          inputs: [
+            {
+              internalType: "address",
+              name: "to",
+              type: "address",
+            },
+            {
+              internalType: "uint256",
+              name: "tokenId",
+              type: "uint256",
+            },
+          ],
+          name: "approve",
+          outputs: [],
+          stateMutability: "payable",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "address",
+              name: "owner",
+              type: "address",
+            },
+          ],
+          name: "balanceOf",
+          outputs: [
+            {
+              internalType: "uint256",
+              name: "",
+              type: "uint256",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "uint256",
+              name: "tokenId",
+              type: "uint256",
+            },
+          ],
+          name: "getApproved",
+          outputs: [
+            {
+              internalType: "address",
+              name: "",
+              type: "address",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "address",
+              name: "owner",
+              type: "address",
+            },
+            {
+              internalType: "address",
+              name: "operator",
+              type: "address",
+            },
+          ],
+          name: "isApprovedForAll",
+          outputs: [
+            {
+              internalType: "bool",
+              name: "",
+              type: "bool",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+        {
           inputs: [],
-          name: "greeting",
+          name: "name",
           outputs: [
             {
               internalType: "string",
@@ -63,6 +272,780 @@ const deployedContracts = {
           ],
           stateMutability: "view",
           type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "uint256",
+              name: "tokenId",
+              type: "uint256",
+            },
+          ],
+          name: "ownerOf",
+          outputs: [
+            {
+              internalType: "address",
+              name: "",
+              type: "address",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "address",
+              name: "from",
+              type: "address",
+            },
+            {
+              internalType: "address",
+              name: "to",
+              type: "address",
+            },
+            {
+              internalType: "uint256",
+              name: "tokenId",
+              type: "uint256",
+            },
+          ],
+          name: "safeTransferFrom",
+          outputs: [],
+          stateMutability: "payable",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "address",
+              name: "from",
+              type: "address",
+            },
+            {
+              internalType: "address",
+              name: "to",
+              type: "address",
+            },
+            {
+              internalType: "uint256",
+              name: "tokenId",
+              type: "uint256",
+            },
+            {
+              internalType: "bytes",
+              name: "_data",
+              type: "bytes",
+            },
+          ],
+          name: "safeTransferFrom",
+          outputs: [],
+          stateMutability: "payable",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "address",
+              name: "operator",
+              type: "address",
+            },
+            {
+              internalType: "bool",
+              name: "approved",
+              type: "bool",
+            },
+          ],
+          name: "setApprovalForAll",
+          outputs: [],
+          stateMutability: "nonpayable",
+          type: "function",
+        },
+        {
+          inputs: [],
+          name: "symbol",
+          outputs: [
+            {
+              internalType: "string",
+              name: "",
+              type: "string",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+        {
+          inputs: [],
+          name: "totalSupply",
+          outputs: [
+            {
+              internalType: "uint256",
+              name: "",
+              type: "uint256",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "address",
+              name: "from",
+              type: "address",
+            },
+            {
+              internalType: "address",
+              name: "to",
+              type: "address",
+            },
+            {
+              internalType: "uint256",
+              name: "tokenId",
+              type: "uint256",
+            },
+          ],
+          name: "transferFrom",
+          outputs: [],
+          stateMutability: "payable",
+          type: "function",
+        },
+      ],
+      inheritedFunctions: {},
+    },
+    GasLover: {
+      address: "0x9abb5861e3a1eDF19C51F8Ac74A81782e94F8FdC",
+      abi: [
+        {
+          inputs: [
+            {
+              internalType: "address",
+              name: "_contractOwner",
+              type: "address",
+            },
+            {
+              components: [
+                {
+                  internalType: "address",
+                  name: "facetAddress",
+                  type: "address",
+                },
+                {
+                  internalType: "enum IDiamondCut.FacetCutAction",
+                  name: "action",
+                  type: "uint8",
+                },
+                {
+                  internalType: "bytes4[]",
+                  name: "functionSelectors",
+                  type: "bytes4[]",
+                },
+              ],
+              internalType: "struct IDiamondCut.FacetCut[]",
+              name: "_diamondCut",
+              type: "tuple[]",
+            },
+            {
+              components: [
+                {
+                  internalType: "address",
+                  name: "initContract",
+                  type: "address",
+                },
+                {
+                  internalType: "bytes",
+                  name: "initData",
+                  type: "bytes",
+                },
+              ],
+              internalType: "struct Diamond.Initialization[]",
+              name: "_initializations",
+              type: "tuple[]",
+            },
+          ],
+          stateMutability: "payable",
+          type: "constructor",
+        },
+        {
+          stateMutability: "payable",
+          type: "fallback",
+        },
+        {
+          stateMutability: "payable",
+          type: "receive",
+        },
+        {
+          inputs: [],
+          name: "init",
+          outputs: [],
+          stateMutability: "nonpayable",
+          type: "function",
+        },
+        {
+          inputs: [],
+          name: "ApprovalCallerNotOwnerNorApproved",
+          type: "error",
+        },
+        {
+          inputs: [],
+          name: "ApprovalQueryForNonexistentToken",
+          type: "error",
+        },
+        {
+          inputs: [],
+          name: "BalanceQueryForZeroAddress",
+          type: "error",
+        },
+        {
+          inputs: [],
+          name: "MintERC2309QuantityExceedsLimit",
+          type: "error",
+        },
+        {
+          inputs: [],
+          name: "MintToZeroAddress",
+          type: "error",
+        },
+        {
+          inputs: [],
+          name: "MintZeroQuantity",
+          type: "error",
+        },
+        {
+          inputs: [],
+          name: "OwnerQueryForNonexistentToken",
+          type: "error",
+        },
+        {
+          inputs: [],
+          name: "OwnershipNotInitializedForExtraData",
+          type: "error",
+        },
+        {
+          inputs: [],
+          name: "TransferCallerNotOwnerNorApproved",
+          type: "error",
+        },
+        {
+          inputs: [],
+          name: "TransferFromIncorrectOwner",
+          type: "error",
+        },
+        {
+          inputs: [],
+          name: "TransferToNonERC721ReceiverImplementer",
+          type: "error",
+        },
+        {
+          inputs: [],
+          name: "TransferToZeroAddress",
+          type: "error",
+        },
+        {
+          inputs: [],
+          name: "URIQueryForNonexistentToken",
+          type: "error",
+        },
+        {
+          anonymous: false,
+          inputs: [
+            {
+              indexed: true,
+              internalType: "address",
+              name: "owner",
+              type: "address",
+            },
+            {
+              indexed: true,
+              internalType: "address",
+              name: "approved",
+              type: "address",
+            },
+            {
+              indexed: true,
+              internalType: "uint256",
+              name: "tokenId",
+              type: "uint256",
+            },
+          ],
+          name: "Approval",
+          type: "event",
+        },
+        {
+          anonymous: false,
+          inputs: [
+            {
+              indexed: true,
+              internalType: "address",
+              name: "owner",
+              type: "address",
+            },
+            {
+              indexed: true,
+              internalType: "address",
+              name: "operator",
+              type: "address",
+            },
+            {
+              indexed: false,
+              internalType: "bool",
+              name: "approved",
+              type: "bool",
+            },
+          ],
+          name: "ApprovalForAll",
+          type: "event",
+        },
+        {
+          anonymous: false,
+          inputs: [
+            {
+              indexed: false,
+              internalType: "uint256",
+              name: "_fromTokenId",
+              type: "uint256",
+            },
+            {
+              indexed: false,
+              internalType: "uint256",
+              name: "_toTokenId",
+              type: "uint256",
+            },
+          ],
+          name: "BatchMetadataUpdate",
+          type: "event",
+        },
+        {
+          anonymous: false,
+          inputs: [
+            {
+              indexed: true,
+              internalType: "uint256",
+              name: "fromTokenId",
+              type: "uint256",
+            },
+            {
+              indexed: false,
+              internalType: "uint256",
+              name: "toTokenId",
+              type: "uint256",
+            },
+            {
+              indexed: true,
+              internalType: "address",
+              name: "from",
+              type: "address",
+            },
+            {
+              indexed: true,
+              internalType: "address",
+              name: "to",
+              type: "address",
+            },
+          ],
+          name: "ConsecutiveTransfer",
+          type: "event",
+        },
+        {
+          anonymous: false,
+          inputs: [
+            {
+              indexed: true,
+              internalType: "address",
+              name: "from",
+              type: "address",
+            },
+            {
+              indexed: true,
+              internalType: "address",
+              name: "to",
+              type: "address",
+            },
+            {
+              indexed: true,
+              internalType: "uint256",
+              name: "tokenId",
+              type: "uint256",
+            },
+          ],
+          name: "Transfer",
+          type: "event",
+        },
+        {
+          inputs: [],
+          name: "mint",
+          outputs: [],
+          stateMutability: "nonpayable",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "uint256",
+              name: "tokenId",
+              type: "uint256",
+            },
+          ],
+          name: "tokenSVG",
+          outputs: [
+            {
+              internalType: "string",
+              name: "",
+              type: "string",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "uint256",
+              name: "tokenId",
+              type: "uint256",
+            },
+          ],
+          name: "tokenURI",
+          outputs: [
+            {
+              internalType: "string",
+              name: "",
+              type: "string",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "address",
+              name: "to",
+              type: "address",
+            },
+            {
+              internalType: "uint256",
+              name: "tokenId",
+              type: "uint256",
+            },
+          ],
+          name: "approve",
+          outputs: [],
+          stateMutability: "payable",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "address",
+              name: "owner",
+              type: "address",
+            },
+          ],
+          name: "balanceOf",
+          outputs: [
+            {
+              internalType: "uint256",
+              name: "",
+              type: "uint256",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "uint256",
+              name: "tokenId",
+              type: "uint256",
+            },
+          ],
+          name: "getApproved",
+          outputs: [
+            {
+              internalType: "address",
+              name: "",
+              type: "address",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "address",
+              name: "owner",
+              type: "address",
+            },
+            {
+              internalType: "address",
+              name: "operator",
+              type: "address",
+            },
+          ],
+          name: "isApprovedForAll",
+          outputs: [
+            {
+              internalType: "bool",
+              name: "",
+              type: "bool",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+        {
+          inputs: [],
+          name: "name",
+          outputs: [
+            {
+              internalType: "string",
+              name: "",
+              type: "string",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "uint256",
+              name: "tokenId",
+              type: "uint256",
+            },
+          ],
+          name: "ownerOf",
+          outputs: [
+            {
+              internalType: "address",
+              name: "",
+              type: "address",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "address",
+              name: "from",
+              type: "address",
+            },
+            {
+              internalType: "address",
+              name: "to",
+              type: "address",
+            },
+            {
+              internalType: "uint256",
+              name: "tokenId",
+              type: "uint256",
+            },
+          ],
+          name: "safeTransferFrom",
+          outputs: [],
+          stateMutability: "payable",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "address",
+              name: "from",
+              type: "address",
+            },
+            {
+              internalType: "address",
+              name: "to",
+              type: "address",
+            },
+            {
+              internalType: "uint256",
+              name: "tokenId",
+              type: "uint256",
+            },
+            {
+              internalType: "bytes",
+              name: "_data",
+              type: "bytes",
+            },
+          ],
+          name: "safeTransferFrom",
+          outputs: [],
+          stateMutability: "payable",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "address",
+              name: "operator",
+              type: "address",
+            },
+            {
+              internalType: "bool",
+              name: "approved",
+              type: "bool",
+            },
+          ],
+          name: "setApprovalForAll",
+          outputs: [],
+          stateMutability: "nonpayable",
+          type: "function",
+        },
+        {
+          inputs: [],
+          name: "symbol",
+          outputs: [
+            {
+              internalType: "string",
+              name: "",
+              type: "string",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+        {
+          inputs: [],
+          name: "totalSupply",
+          outputs: [
+            {
+              internalType: "uint256",
+              name: "",
+              type: "uint256",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "address",
+              name: "from",
+              type: "address",
+            },
+            {
+              internalType: "address",
+              name: "to",
+              type: "address",
+            },
+            {
+              internalType: "uint256",
+              name: "tokenId",
+              type: "uint256",
+            },
+          ],
+          name: "transferFrom",
+          outputs: [],
+          stateMutability: "payable",
+          type: "function",
+        },
+        {
+          anonymous: false,
+          inputs: [
+            {
+              components: [
+                {
+                  internalType: "address",
+                  name: "facetAddress",
+                  type: "address",
+                },
+                {
+                  internalType: "enum IDiamondCut.FacetCutAction",
+                  name: "action",
+                  type: "uint8",
+                },
+                {
+                  internalType: "bytes4[]",
+                  name: "functionSelectors",
+                  type: "bytes4[]",
+                },
+              ],
+              indexed: false,
+              internalType: "struct IDiamondCut.FacetCut[]",
+              name: "_diamondCut",
+              type: "tuple[]",
+            },
+            {
+              indexed: false,
+              internalType: "address",
+              name: "_init",
+              type: "address",
+            },
+            {
+              indexed: false,
+              internalType: "bytes",
+              name: "_calldata",
+              type: "bytes",
+            },
+          ],
+          name: "DiamondCut",
+          type: "event",
+        },
+        {
+          inputs: [
+            {
+              components: [
+                {
+                  internalType: "address",
+                  name: "facetAddress",
+                  type: "address",
+                },
+                {
+                  internalType: "enum IDiamondCut.FacetCutAction",
+                  name: "action",
+                  type: "uint8",
+                },
+                {
+                  internalType: "bytes4[]",
+                  name: "functionSelectors",
+                  type: "bytes4[]",
+                },
+              ],
+              internalType: "struct IDiamondCut.FacetCut[]",
+              name: "_diamondCut",
+              type: "tuple[]",
+            },
+            {
+              internalType: "address",
+              name: "_init",
+              type: "address",
+            },
+            {
+              internalType: "bytes",
+              name: "_calldata",
+              type: "bytes",
+            },
+          ],
+          name: "diamondCut",
+          outputs: [],
+          stateMutability: "nonpayable",
+          type: "function",
+        },
+        {
+          anonymous: false,
+          inputs: [
+            {
+              indexed: true,
+              internalType: "address",
+              name: "previousOwner",
+              type: "address",
+            },
+            {
+              indexed: true,
+              internalType: "address",
+              name: "newOwner",
+              type: "address",
+            },
+          ],
+          name: "OwnershipTransferred",
+          type: "event",
         },
         {
           inputs: [],
@@ -70,7 +1053,39 @@ const deployedContracts = {
           outputs: [
             {
               internalType: "address",
-              name: "",
+              name: "owner_",
+              type: "address",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "address",
+              name: "_newOwner",
+              type: "address",
+            },
+          ],
+          name: "transferOwnership",
+          outputs: [],
+          stateMutability: "nonpayable",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "bytes4",
+              name: "_functionSelector",
+              type: "bytes4",
+            },
+          ],
+          name: "facetAddress",
+          outputs: [
+            {
+              internalType: "address",
+              name: "facetAddress_",
               type: "address",
             },
           ],
@@ -79,7 +1094,456 @@ const deployedContracts = {
         },
         {
           inputs: [],
-          name: "premium",
+          name: "facetAddresses",
+          outputs: [
+            {
+              internalType: "address[]",
+              name: "facetAddresses_",
+              type: "address[]",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "address",
+              name: "_facet",
+              type: "address",
+            },
+          ],
+          name: "facetFunctionSelectors",
+          outputs: [
+            {
+              internalType: "bytes4[]",
+              name: "facetFunctionSelectors_",
+              type: "bytes4[]",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+        {
+          inputs: [],
+          name: "facets",
+          outputs: [
+            {
+              components: [
+                {
+                  internalType: "address",
+                  name: "facetAddress",
+                  type: "address",
+                },
+                {
+                  internalType: "bytes4[]",
+                  name: "functionSelectors",
+                  type: "bytes4[]",
+                },
+              ],
+              internalType: "struct IDiamondLoupe.Facet[]",
+              name: "facets_",
+              type: "tuple[]",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "bytes4",
+              name: "_interfaceId",
+              type: "bytes4",
+            },
+          ],
+          name: "supportsInterface",
+          outputs: [
+            {
+              internalType: "bool",
+              name: "",
+              type: "bool",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+      ],
+      inheritedFunctions: {},
+    },
+    GasLover_DiamondProxy: {
+      address: "0x9abb5861e3a1eDF19C51F8Ac74A81782e94F8FdC",
+      abi: [
+        {
+          inputs: [
+            {
+              internalType: "address",
+              name: "_contractOwner",
+              type: "address",
+            },
+            {
+              components: [
+                {
+                  internalType: "address",
+                  name: "facetAddress",
+                  type: "address",
+                },
+                {
+                  internalType: "enum IDiamondCut.FacetCutAction",
+                  name: "action",
+                  type: "uint8",
+                },
+                {
+                  internalType: "bytes4[]",
+                  name: "functionSelectors",
+                  type: "bytes4[]",
+                },
+              ],
+              internalType: "struct IDiamondCut.FacetCut[]",
+              name: "_diamondCut",
+              type: "tuple[]",
+            },
+            {
+              components: [
+                {
+                  internalType: "address",
+                  name: "initContract",
+                  type: "address",
+                },
+                {
+                  internalType: "bytes",
+                  name: "initData",
+                  type: "bytes",
+                },
+              ],
+              internalType: "struct Diamond.Initialization[]",
+              name: "_initializations",
+              type: "tuple[]",
+            },
+          ],
+          stateMutability: "payable",
+          type: "constructor",
+        },
+        {
+          stateMutability: "payable",
+          type: "fallback",
+        },
+        {
+          stateMutability: "payable",
+          type: "receive",
+        },
+        {
+          inputs: [],
+          name: "init",
+          outputs: [],
+          stateMutability: "nonpayable",
+          type: "function",
+        },
+        {
+          inputs: [],
+          name: "ApprovalCallerNotOwnerNorApproved",
+          type: "error",
+        },
+        {
+          inputs: [],
+          name: "ApprovalQueryForNonexistentToken",
+          type: "error",
+        },
+        {
+          inputs: [],
+          name: "BalanceQueryForZeroAddress",
+          type: "error",
+        },
+        {
+          inputs: [],
+          name: "MintERC2309QuantityExceedsLimit",
+          type: "error",
+        },
+        {
+          inputs: [],
+          name: "MintToZeroAddress",
+          type: "error",
+        },
+        {
+          inputs: [],
+          name: "MintZeroQuantity",
+          type: "error",
+        },
+        {
+          inputs: [],
+          name: "OwnerQueryForNonexistentToken",
+          type: "error",
+        },
+        {
+          inputs: [],
+          name: "OwnershipNotInitializedForExtraData",
+          type: "error",
+        },
+        {
+          inputs: [],
+          name: "TransferCallerNotOwnerNorApproved",
+          type: "error",
+        },
+        {
+          inputs: [],
+          name: "TransferFromIncorrectOwner",
+          type: "error",
+        },
+        {
+          inputs: [],
+          name: "TransferToNonERC721ReceiverImplementer",
+          type: "error",
+        },
+        {
+          inputs: [],
+          name: "TransferToZeroAddress",
+          type: "error",
+        },
+        {
+          inputs: [],
+          name: "URIQueryForNonexistentToken",
+          type: "error",
+        },
+        {
+          anonymous: false,
+          inputs: [
+            {
+              indexed: true,
+              internalType: "address",
+              name: "owner",
+              type: "address",
+            },
+            {
+              indexed: true,
+              internalType: "address",
+              name: "approved",
+              type: "address",
+            },
+            {
+              indexed: true,
+              internalType: "uint256",
+              name: "tokenId",
+              type: "uint256",
+            },
+          ],
+          name: "Approval",
+          type: "event",
+        },
+        {
+          anonymous: false,
+          inputs: [
+            {
+              indexed: true,
+              internalType: "address",
+              name: "owner",
+              type: "address",
+            },
+            {
+              indexed: true,
+              internalType: "address",
+              name: "operator",
+              type: "address",
+            },
+            {
+              indexed: false,
+              internalType: "bool",
+              name: "approved",
+              type: "bool",
+            },
+          ],
+          name: "ApprovalForAll",
+          type: "event",
+        },
+        {
+          anonymous: false,
+          inputs: [
+            {
+              indexed: false,
+              internalType: "uint256",
+              name: "_fromTokenId",
+              type: "uint256",
+            },
+            {
+              indexed: false,
+              internalType: "uint256",
+              name: "_toTokenId",
+              type: "uint256",
+            },
+          ],
+          name: "BatchMetadataUpdate",
+          type: "event",
+        },
+        {
+          anonymous: false,
+          inputs: [
+            {
+              indexed: true,
+              internalType: "uint256",
+              name: "fromTokenId",
+              type: "uint256",
+            },
+            {
+              indexed: false,
+              internalType: "uint256",
+              name: "toTokenId",
+              type: "uint256",
+            },
+            {
+              indexed: true,
+              internalType: "address",
+              name: "from",
+              type: "address",
+            },
+            {
+              indexed: true,
+              internalType: "address",
+              name: "to",
+              type: "address",
+            },
+          ],
+          name: "ConsecutiveTransfer",
+          type: "event",
+        },
+        {
+          anonymous: false,
+          inputs: [
+            {
+              indexed: true,
+              internalType: "address",
+              name: "from",
+              type: "address",
+            },
+            {
+              indexed: true,
+              internalType: "address",
+              name: "to",
+              type: "address",
+            },
+            {
+              indexed: true,
+              internalType: "uint256",
+              name: "tokenId",
+              type: "uint256",
+            },
+          ],
+          name: "Transfer",
+          type: "event",
+        },
+        {
+          inputs: [],
+          name: "mint",
+          outputs: [],
+          stateMutability: "nonpayable",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "uint256",
+              name: "tokenId",
+              type: "uint256",
+            },
+          ],
+          name: "tokenSVG",
+          outputs: [
+            {
+              internalType: "string",
+              name: "",
+              type: "string",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "uint256",
+              name: "tokenId",
+              type: "uint256",
+            },
+          ],
+          name: "tokenURI",
+          outputs: [
+            {
+              internalType: "string",
+              name: "",
+              type: "string",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "address",
+              name: "to",
+              type: "address",
+            },
+            {
+              internalType: "uint256",
+              name: "tokenId",
+              type: "uint256",
+            },
+          ],
+          name: "approve",
+          outputs: [],
+          stateMutability: "payable",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "address",
+              name: "owner",
+              type: "address",
+            },
+          ],
+          name: "balanceOf",
+          outputs: [
+            {
+              internalType: "uint256",
+              name: "",
+              type: "uint256",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "uint256",
+              name: "tokenId",
+              type: "uint256",
+            },
+          ],
+          name: "getApproved",
+          outputs: [
+            {
+              internalType: "address",
+              name: "",
+              type: "address",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "address",
+              name: "owner",
+              type: "address",
+            },
+            {
+              internalType: "address",
+              name: "operator",
+              type: "address",
+            },
+          ],
+          name: "isApprovedForAll",
           outputs: [
             {
               internalType: "bool",
@@ -91,21 +1555,122 @@ const deployedContracts = {
           type: "function",
         },
         {
-          inputs: [
+          inputs: [],
+          name: "name",
+          outputs: [
             {
               internalType: "string",
-              name: "_newGreeting",
+              name: "",
               type: "string",
             },
           ],
-          name: "setGreeting",
+          stateMutability: "view",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "uint256",
+              name: "tokenId",
+              type: "uint256",
+            },
+          ],
+          name: "ownerOf",
+          outputs: [
+            {
+              internalType: "address",
+              name: "",
+              type: "address",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "address",
+              name: "from",
+              type: "address",
+            },
+            {
+              internalType: "address",
+              name: "to",
+              type: "address",
+            },
+            {
+              internalType: "uint256",
+              name: "tokenId",
+              type: "uint256",
+            },
+          ],
+          name: "safeTransferFrom",
           outputs: [],
           stateMutability: "payable",
           type: "function",
         },
         {
+          inputs: [
+            {
+              internalType: "address",
+              name: "from",
+              type: "address",
+            },
+            {
+              internalType: "address",
+              name: "to",
+              type: "address",
+            },
+            {
+              internalType: "uint256",
+              name: "tokenId",
+              type: "uint256",
+            },
+            {
+              internalType: "bytes",
+              name: "_data",
+              type: "bytes",
+            },
+          ],
+          name: "safeTransferFrom",
+          outputs: [],
+          stateMutability: "payable",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "address",
+              name: "operator",
+              type: "address",
+            },
+            {
+              internalType: "bool",
+              name: "approved",
+              type: "bool",
+            },
+          ],
+          name: "setApprovalForAll",
+          outputs: [],
+          stateMutability: "nonpayable",
+          type: "function",
+        },
+        {
           inputs: [],
-          name: "totalCounter",
+          name: "symbol",
+          outputs: [
+            {
+              internalType: "string",
+              name: "",
+              type: "string",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+        {
+          inputs: [],
+          name: "totalSupply",
           outputs: [
             {
               internalType: "uint256",
@@ -120,16 +1685,166 @@ const deployedContracts = {
           inputs: [
             {
               internalType: "address",
-              name: "",
+              name: "from",
+              type: "address",
+            },
+            {
+              internalType: "address",
+              name: "to",
+              type: "address",
+            },
+            {
+              internalType: "uint256",
+              name: "tokenId",
+              type: "uint256",
+            },
+          ],
+          name: "transferFrom",
+          outputs: [],
+          stateMutability: "payable",
+          type: "function",
+        },
+        {
+          anonymous: false,
+          inputs: [
+            {
+              components: [
+                {
+                  internalType: "address",
+                  name: "facetAddress",
+                  type: "address",
+                },
+                {
+                  internalType: "enum IDiamondCut.FacetCutAction",
+                  name: "action",
+                  type: "uint8",
+                },
+                {
+                  internalType: "bytes4[]",
+                  name: "functionSelectors",
+                  type: "bytes4[]",
+                },
+              ],
+              indexed: false,
+              internalType: "struct IDiamondCut.FacetCut[]",
+              name: "_diamondCut",
+              type: "tuple[]",
+            },
+            {
+              indexed: false,
+              internalType: "address",
+              name: "_init",
+              type: "address",
+            },
+            {
+              indexed: false,
+              internalType: "bytes",
+              name: "_calldata",
+              type: "bytes",
+            },
+          ],
+          name: "DiamondCut",
+          type: "event",
+        },
+        {
+          inputs: [
+            {
+              components: [
+                {
+                  internalType: "address",
+                  name: "facetAddress",
+                  type: "address",
+                },
+                {
+                  internalType: "enum IDiamondCut.FacetCutAction",
+                  name: "action",
+                  type: "uint8",
+                },
+                {
+                  internalType: "bytes4[]",
+                  name: "functionSelectors",
+                  type: "bytes4[]",
+                },
+              ],
+              internalType: "struct IDiamondCut.FacetCut[]",
+              name: "_diamondCut",
+              type: "tuple[]",
+            },
+            {
+              internalType: "address",
+              name: "_init",
+              type: "address",
+            },
+            {
+              internalType: "bytes",
+              name: "_calldata",
+              type: "bytes",
+            },
+          ],
+          name: "diamondCut",
+          outputs: [],
+          stateMutability: "nonpayable",
+          type: "function",
+        },
+        {
+          anonymous: false,
+          inputs: [
+            {
+              indexed: true,
+              internalType: "address",
+              name: "previousOwner",
+              type: "address",
+            },
+            {
+              indexed: true,
+              internalType: "address",
+              name: "newOwner",
               type: "address",
             },
           ],
-          name: "userGreetingCounter",
+          name: "OwnershipTransferred",
+          type: "event",
+        },
+        {
+          inputs: [],
+          name: "owner",
           outputs: [
             {
-              internalType: "uint256",
-              name: "",
-              type: "uint256",
+              internalType: "address",
+              name: "owner_",
+              type: "address",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "address",
+              name: "_newOwner",
+              type: "address",
+            },
+          ],
+          name: "transferOwnership",
+          outputs: [],
+          stateMutability: "nonpayable",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "bytes4",
+              name: "_functionSelector",
+              type: "bytes4",
+            },
+          ],
+          name: "facetAddress",
+          outputs: [
+            {
+              internalType: "address",
+              name: "facetAddress_",
+              type: "address",
             },
           ],
           stateMutability: "view",
@@ -137,14 +1852,774 @@ const deployedContracts = {
         },
         {
           inputs: [],
-          name: "withdraw",
+          name: "facetAddresses",
+          outputs: [
+            {
+              internalType: "address[]",
+              name: "facetAddresses_",
+              type: "address[]",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "address",
+              name: "_facet",
+              type: "address",
+            },
+          ],
+          name: "facetFunctionSelectors",
+          outputs: [
+            {
+              internalType: "bytes4[]",
+              name: "facetFunctionSelectors_",
+              type: "bytes4[]",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+        {
+          inputs: [],
+          name: "facets",
+          outputs: [
+            {
+              components: [
+                {
+                  internalType: "address",
+                  name: "facetAddress",
+                  type: "address",
+                },
+                {
+                  internalType: "bytes4[]",
+                  name: "functionSelectors",
+                  type: "bytes4[]",
+                },
+              ],
+              internalType: "struct IDiamondLoupe.Facet[]",
+              name: "facets_",
+              type: "tuple[]",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "bytes4",
+              name: "_interfaceId",
+              type: "bytes4",
+            },
+          ],
+          name: "supportsInterface",
+          outputs: [
+            {
+              internalType: "bool",
+              name: "",
+              type: "bool",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+      ],
+      inheritedFunctions: {},
+    },
+    InitFacet: {
+      address: "0x731C9c6229AeebC572f79Ee6a9a9cFD0c2FC4b98",
+      abi: [
+        {
+          inputs: [],
+          name: "init",
           outputs: [],
           stateMutability: "nonpayable",
           type: "function",
         },
+      ],
+      inheritedFunctions: {},
+    },
+    MintFacet: {
+      address: "0x131aba20FdDfFfd001B8ED19596fDF8C88c15e41",
+      abi: [
         {
-          stateMutability: "payable",
-          type: "receive",
+          inputs: [],
+          name: "ApprovalCallerNotOwnerNorApproved",
+          type: "error",
+        },
+        {
+          inputs: [],
+          name: "ApprovalQueryForNonexistentToken",
+          type: "error",
+        },
+        {
+          inputs: [],
+          name: "BalanceQueryForZeroAddress",
+          type: "error",
+        },
+        {
+          inputs: [],
+          name: "MintERC2309QuantityExceedsLimit",
+          type: "error",
+        },
+        {
+          inputs: [],
+          name: "MintToZeroAddress",
+          type: "error",
+        },
+        {
+          inputs: [],
+          name: "MintZeroQuantity",
+          type: "error",
+        },
+        {
+          inputs: [],
+          name: "OwnerQueryForNonexistentToken",
+          type: "error",
+        },
+        {
+          inputs: [],
+          name: "OwnershipNotInitializedForExtraData",
+          type: "error",
+        },
+        {
+          inputs: [],
+          name: "TransferCallerNotOwnerNorApproved",
+          type: "error",
+        },
+        {
+          inputs: [],
+          name: "TransferFromIncorrectOwner",
+          type: "error",
+        },
+        {
+          inputs: [],
+          name: "TransferToNonERC721ReceiverImplementer",
+          type: "error",
+        },
+        {
+          inputs: [],
+          name: "TransferToZeroAddress",
+          type: "error",
+        },
+        {
+          inputs: [],
+          name: "URIQueryForNonexistentToken",
+          type: "error",
+        },
+        {
+          anonymous: false,
+          inputs: [
+            {
+              indexed: true,
+              internalType: "address",
+              name: "owner",
+              type: "address",
+            },
+            {
+              indexed: true,
+              internalType: "address",
+              name: "approved",
+              type: "address",
+            },
+            {
+              indexed: true,
+              internalType: "uint256",
+              name: "tokenId",
+              type: "uint256",
+            },
+          ],
+          name: "Approval",
+          type: "event",
+        },
+        {
+          anonymous: false,
+          inputs: [
+            {
+              indexed: true,
+              internalType: "address",
+              name: "owner",
+              type: "address",
+            },
+            {
+              indexed: true,
+              internalType: "address",
+              name: "operator",
+              type: "address",
+            },
+            {
+              indexed: false,
+              internalType: "bool",
+              name: "approved",
+              type: "bool",
+            },
+          ],
+          name: "ApprovalForAll",
+          type: "event",
+        },
+        {
+          anonymous: false,
+          inputs: [
+            {
+              indexed: false,
+              internalType: "uint256",
+              name: "_fromTokenId",
+              type: "uint256",
+            },
+            {
+              indexed: false,
+              internalType: "uint256",
+              name: "_toTokenId",
+              type: "uint256",
+            },
+          ],
+          name: "BatchMetadataUpdate",
+          type: "event",
+        },
+        {
+          anonymous: false,
+          inputs: [
+            {
+              indexed: true,
+              internalType: "uint256",
+              name: "fromTokenId",
+              type: "uint256",
+            },
+            {
+              indexed: false,
+              internalType: "uint256",
+              name: "toTokenId",
+              type: "uint256",
+            },
+            {
+              indexed: true,
+              internalType: "address",
+              name: "from",
+              type: "address",
+            },
+            {
+              indexed: true,
+              internalType: "address",
+              name: "to",
+              type: "address",
+            },
+          ],
+          name: "ConsecutiveTransfer",
+          type: "event",
+        },
+        {
+          anonymous: false,
+          inputs: [
+            {
+              indexed: true,
+              internalType: "address",
+              name: "from",
+              type: "address",
+            },
+            {
+              indexed: true,
+              internalType: "address",
+              name: "to",
+              type: "address",
+            },
+            {
+              indexed: true,
+              internalType: "uint256",
+              name: "tokenId",
+              type: "uint256",
+            },
+          ],
+          name: "Transfer",
+          type: "event",
+        },
+        {
+          inputs: [],
+          name: "mint",
+          outputs: [],
+          stateMutability: "nonpayable",
+          type: "function",
+        },
+      ],
+      inheritedFunctions: {},
+    },
+    RenderFacet: {
+      address: "0x382b06cdA7c699D9653A4FC3C4e3489817C609DB",
+      abi: [
+        {
+          inputs: [],
+          name: "ApprovalCallerNotOwnerNorApproved",
+          type: "error",
+        },
+        {
+          inputs: [],
+          name: "ApprovalQueryForNonexistentToken",
+          type: "error",
+        },
+        {
+          inputs: [],
+          name: "BalanceQueryForZeroAddress",
+          type: "error",
+        },
+        {
+          inputs: [],
+          name: "MintERC2309QuantityExceedsLimit",
+          type: "error",
+        },
+        {
+          inputs: [],
+          name: "MintToZeroAddress",
+          type: "error",
+        },
+        {
+          inputs: [],
+          name: "MintZeroQuantity",
+          type: "error",
+        },
+        {
+          inputs: [],
+          name: "OwnerQueryForNonexistentToken",
+          type: "error",
+        },
+        {
+          inputs: [],
+          name: "OwnershipNotInitializedForExtraData",
+          type: "error",
+        },
+        {
+          inputs: [],
+          name: "TransferCallerNotOwnerNorApproved",
+          type: "error",
+        },
+        {
+          inputs: [],
+          name: "TransferFromIncorrectOwner",
+          type: "error",
+        },
+        {
+          inputs: [],
+          name: "TransferToNonERC721ReceiverImplementer",
+          type: "error",
+        },
+        {
+          inputs: [],
+          name: "TransferToZeroAddress",
+          type: "error",
+        },
+        {
+          inputs: [],
+          name: "URIQueryForNonexistentToken",
+          type: "error",
+        },
+        {
+          anonymous: false,
+          inputs: [
+            {
+              indexed: true,
+              internalType: "address",
+              name: "owner",
+              type: "address",
+            },
+            {
+              indexed: true,
+              internalType: "address",
+              name: "approved",
+              type: "address",
+            },
+            {
+              indexed: true,
+              internalType: "uint256",
+              name: "tokenId",
+              type: "uint256",
+            },
+          ],
+          name: "Approval",
+          type: "event",
+        },
+        {
+          anonymous: false,
+          inputs: [
+            {
+              indexed: true,
+              internalType: "address",
+              name: "owner",
+              type: "address",
+            },
+            {
+              indexed: true,
+              internalType: "address",
+              name: "operator",
+              type: "address",
+            },
+            {
+              indexed: false,
+              internalType: "bool",
+              name: "approved",
+              type: "bool",
+            },
+          ],
+          name: "ApprovalForAll",
+          type: "event",
+        },
+        {
+          anonymous: false,
+          inputs: [
+            {
+              indexed: true,
+              internalType: "uint256",
+              name: "fromTokenId",
+              type: "uint256",
+            },
+            {
+              indexed: false,
+              internalType: "uint256",
+              name: "toTokenId",
+              type: "uint256",
+            },
+            {
+              indexed: true,
+              internalType: "address",
+              name: "from",
+              type: "address",
+            },
+            {
+              indexed: true,
+              internalType: "address",
+              name: "to",
+              type: "address",
+            },
+          ],
+          name: "ConsecutiveTransfer",
+          type: "event",
+        },
+        {
+          anonymous: false,
+          inputs: [
+            {
+              indexed: true,
+              internalType: "address",
+              name: "from",
+              type: "address",
+            },
+            {
+              indexed: true,
+              internalType: "address",
+              name: "to",
+              type: "address",
+            },
+            {
+              indexed: true,
+              internalType: "uint256",
+              name: "tokenId",
+              type: "uint256",
+            },
+          ],
+          name: "Transfer",
+          type: "event",
+        },
+        {
+          inputs: [
+            {
+              internalType: "uint256",
+              name: "tokenId",
+              type: "uint256",
+            },
+          ],
+          name: "tokenSVG",
+          outputs: [
+            {
+              internalType: "string",
+              name: "",
+              type: "string",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "uint256",
+              name: "tokenId",
+              type: "uint256",
+            },
+          ],
+          name: "tokenURI",
+          outputs: [
+            {
+              internalType: "string",
+              name: "",
+              type: "string",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+      ],
+      inheritedFunctions: {},
+    },
+    _DefaultDiamondCutFacet: {
+      address: "0x429dbdE7913c0Ed51E4B21163760B92eE66Ff5f5",
+      abi: [
+        {
+          anonymous: false,
+          inputs: [
+            {
+              components: [
+                {
+                  internalType: "address",
+                  name: "facetAddress",
+                  type: "address",
+                },
+                {
+                  internalType: "enum IDiamondCut.FacetCutAction",
+                  name: "action",
+                  type: "uint8",
+                },
+                {
+                  internalType: "bytes4[]",
+                  name: "functionSelectors",
+                  type: "bytes4[]",
+                },
+              ],
+              indexed: false,
+              internalType: "struct IDiamondCut.FacetCut[]",
+              name: "_diamondCut",
+              type: "tuple[]",
+            },
+            {
+              indexed: false,
+              internalType: "address",
+              name: "_init",
+              type: "address",
+            },
+            {
+              indexed: false,
+              internalType: "bytes",
+              name: "_calldata",
+              type: "bytes",
+            },
+          ],
+          name: "DiamondCut",
+          type: "event",
+        },
+        {
+          inputs: [
+            {
+              components: [
+                {
+                  internalType: "address",
+                  name: "facetAddress",
+                  type: "address",
+                },
+                {
+                  internalType: "enum IDiamondCut.FacetCutAction",
+                  name: "action",
+                  type: "uint8",
+                },
+                {
+                  internalType: "bytes4[]",
+                  name: "functionSelectors",
+                  type: "bytes4[]",
+                },
+              ],
+              internalType: "struct IDiamondCut.FacetCut[]",
+              name: "_diamondCut",
+              type: "tuple[]",
+            },
+            {
+              internalType: "address",
+              name: "_init",
+              type: "address",
+            },
+            {
+              internalType: "bytes",
+              name: "_calldata",
+              type: "bytes",
+            },
+          ],
+          name: "diamondCut",
+          outputs: [],
+          stateMutability: "nonpayable",
+          type: "function",
+        },
+      ],
+      inheritedFunctions: {},
+    },
+    _DefaultDiamondERC165Init: {
+      address: "0xe68d85348f227d2ebEE814C38918F8A2D7d9B603",
+      abi: [
+        {
+          inputs: [
+            {
+              internalType: "bytes4[]",
+              name: "interfaceIds",
+              type: "bytes4[]",
+            },
+            {
+              internalType: "bytes4[]",
+              name: "interfaceIdsToRemove",
+              type: "bytes4[]",
+            },
+          ],
+          name: "setERC165",
+          outputs: [],
+          stateMutability: "nonpayable",
+          type: "function",
+        },
+      ],
+      inheritedFunctions: {},
+    },
+    _DefaultDiamondLoupeFacet: {
+      address: "0x3Bcf4185443A339517aD4e580067f178d1B68E1D",
+      abi: [
+        {
+          inputs: [
+            {
+              internalType: "bytes4",
+              name: "_functionSelector",
+              type: "bytes4",
+            },
+          ],
+          name: "facetAddress",
+          outputs: [
+            {
+              internalType: "address",
+              name: "facetAddress_",
+              type: "address",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+        {
+          inputs: [],
+          name: "facetAddresses",
+          outputs: [
+            {
+              internalType: "address[]",
+              name: "facetAddresses_",
+              type: "address[]",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "address",
+              name: "_facet",
+              type: "address",
+            },
+          ],
+          name: "facetFunctionSelectors",
+          outputs: [
+            {
+              internalType: "bytes4[]",
+              name: "facetFunctionSelectors_",
+              type: "bytes4[]",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+        {
+          inputs: [],
+          name: "facets",
+          outputs: [
+            {
+              components: [
+                {
+                  internalType: "address",
+                  name: "facetAddress",
+                  type: "address",
+                },
+                {
+                  internalType: "bytes4[]",
+                  name: "functionSelectors",
+                  type: "bytes4[]",
+                },
+              ],
+              internalType: "struct IDiamondLoupe.Facet[]",
+              name: "facets_",
+              type: "tuple[]",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "bytes4",
+              name: "_interfaceId",
+              type: "bytes4",
+            },
+          ],
+          name: "supportsInterface",
+          outputs: [
+            {
+              internalType: "bool",
+              name: "",
+              type: "bool",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+      ],
+      inheritedFunctions: {},
+    },
+    _DefaultDiamondOwnershipFacet: {
+      address: "0xaD6E96fF641af53CCe4205DAfeCb8e3aCD0490E3",
+      abi: [
+        {
+          anonymous: false,
+          inputs: [
+            {
+              indexed: true,
+              internalType: "address",
+              name: "previousOwner",
+              type: "address",
+            },
+            {
+              indexed: true,
+              internalType: "address",
+              name: "newOwner",
+              type: "address",
+            },
+          ],
+          name: "OwnershipTransferred",
+          type: "event",
+        },
+        {
+          inputs: [],
+          name: "owner",
+          outputs: [
+            {
+              internalType: "address",
+              name: "owner_",
+              type: "address",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "address",
+              name: "_newOwner",
+              type: "address",
+            },
+          ],
+          name: "transferOwnership",
+          outputs: [],
+          stateMutability: "nonpayable",
+          type: "function",
         },
       ],
       inheritedFunctions: {},

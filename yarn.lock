@@ -320,6 +320,34 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@ensdomains/buffer@npm:^0.1.1":
+  version: 0.1.1
+  resolution: "@ensdomains/buffer@npm:0.1.1"
+  checksum: 196cf0a6a34e473a13b47458c56b4db1a9db226e5939af77497da02cb60ccfabff24613380e66154a64c8c372526e7ee8fa790bffaa55a70ddfe5b6c199ec9f7
+  languageName: node
+  linkType: hard
+
+"@ensdomains/ens-contracts@npm:^1.0.1":
+  version: 1.0.1
+  resolution: "@ensdomains/ens-contracts@npm:1.0.1"
+  dependencies:
+    "@ensdomains/buffer": ^0.1.1
+    "@ensdomains/solsha1": 0.0.3
+    "@openzeppelin/contracts": ^4.1.0
+    dns-packet: ^5.3.0
+  checksum: 6399db1243aa7d1e57242ac298d3fb627717d8d0bb940574df8b55a588d4318b91b1aa4ff2aa3d2de5db20b73d0fc91b4b6fba42e254278b1f51afaff02c37bd
+  languageName: node
+  linkType: hard
+
+"@ensdomains/solsha1@npm:0.0.3":
+  version: 0.0.3
+  resolution: "@ensdomains/solsha1@npm:0.0.3"
+  dependencies:
+    hash-test-vectors: ^1.3.2
+  checksum: 1a84ccc329da4d40422c770e0baea1a63869f31a417589e3451a9997542c2f6683b6f8d3410de97580bbdce0567aba79328a86c7fda8925e446e02d724be6880
+  languageName: node
+  linkType: hard
+
 "@eslint-community/eslint-utils@npm:^4.2.0, @eslint-community/eslint-utils@npm:^4.4.0":
   version: 4.4.0
   resolution: "@eslint-community/eslint-utils@npm:4.4.0"
@@ -888,6 +916,13 @@ __metadata:
     "@jridgewell/resolve-uri": ^3.1.0
     "@jridgewell/sourcemap-codec": ^1.4.14
   checksum: 956a6f0f6fec060fb48c6bf1f5ec2064e13cd38c8be3873877d4b92b4a27ba58289a34071752671262a3e3c202abcc3fa2aac64d8447b4b0fa1ba3c9047f1c20
+  languageName: node
+  linkType: hard
+
+"@leichtgewicht/ip-codec@npm:^2.0.1":
+  version: 2.0.4
+  resolution: "@leichtgewicht/ip-codec@npm:2.0.4"
+  checksum: 468de1f04d33de6d300892683d7c8aecbf96d1e2c5fe084f95f816e50a054d45b7c1ebfb141a1447d844b86a948733f6eebd92234da8581c84a1ad4de2946a2d
   languageName: node
   linkType: hard
 
@@ -1540,6 +1575,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@openzeppelin/contracts@npm:^4.1.0":
+  version: 4.9.5
+  resolution: "@openzeppelin/contracts@npm:4.9.5"
+  checksum: 2cddeb08c006a8f99c5cc40cc80aecb449fd941cd1a92ebda315d77f48c4b4d487798a1254bffbc3ec811b390365d14665e92dbb2dd8f45aacef479d69d94574
+  languageName: node
+  linkType: hard
+
 "@openzeppelin/contracts@npm:^4.8.1":
   version: 4.9.3
   resolution: "@openzeppelin/contracts@npm:4.9.3"
@@ -1828,6 +1870,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@se-2/hardhat@workspace:packages/hardhat"
   dependencies:
+    "@ensdomains/ens-contracts": ^1.0.1
     "@ethersproject/abi": ^5.7.0
     "@ethersproject/providers": ^5.7.1
     "@nomicfoundation/hardhat-chai-matchers": ^2.0.3
@@ -5786,6 +5829,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"dns-packet@npm:^5.3.0":
+  version: 5.6.1
+  resolution: "dns-packet@npm:5.6.1"
+  dependencies:
+    "@leichtgewicht/ip-codec": ^2.0.1
+  checksum: 64c06457f0c6e143f7a0946e0aeb8de1c5f752217cfa143ef527467c00a6d78db1835cfdb6bb68333d9f9a4963cf23f410439b5262a8935cce1236f45e344b81
+  languageName: node
+  linkType: hard
+
 "doctrine@npm:^2.1.0":
   version: 2.1.0
   resolution: "doctrine@npm:2.1.0"
@@ -8200,6 +8252,13 @@ __metadata:
     readable-stream: ^3.6.0
     safe-buffer: ^5.2.0
   checksum: 26b7e97ac3de13cb23fc3145e7e3450b0530274a9562144fc2bf5c1e2983afd0e09ed7cc3b20974ba66039fad316db463da80eb452e7373e780cbee9a0d2f2dc
+  languageName: node
+  linkType: hard
+
+"hash-test-vectors@npm:^1.3.2":
+  version: 1.3.2
+  resolution: "hash-test-vectors@npm:1.3.2"
+  checksum: f51d49cb86058aa70f92cbdebb02e30bc458d3f02645931f65ff329a32f8beb7ba91be303d7555d17b443a49124fceb007a5eaa2f6d333b8939eaf764f034fb5
   languageName: node
   linkType: hard
 
