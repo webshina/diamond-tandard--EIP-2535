@@ -679,6 +679,13 @@ const deployedContracts = {
           type: "function",
         },
         {
+          inputs: [],
+          name: "initENS",
+          outputs: [],
+          stateMutability: "nonpayable",
+          type: "function",
+        },
+        {
           inputs: [
             {
               internalType: "uint256",
@@ -714,6 +721,13 @@ const deployedContracts = {
             },
           ],
           stateMutability: "view",
+          type: "function",
+        },
+        {
+          inputs: [],
+          name: "withdraw",
+          outputs: [],
+          stateMutability: "nonpayable",
           type: "function",
         },
         {
@@ -2355,6 +2369,260 @@ const deployedContracts = {
             },
           ],
           stateMutability: "view",
+          type: "function",
+        },
+      ],
+      inheritedFunctions: {},
+    },
+    RenderFacetWithENS: {
+      address: "0x064D81963F665950e5CC75BB12688598eaafDe1D",
+      abi: [
+        {
+          inputs: [],
+          name: "ApprovalCallerNotOwnerNorApproved",
+          type: "error",
+        },
+        {
+          inputs: [],
+          name: "ApprovalQueryForNonexistentToken",
+          type: "error",
+        },
+        {
+          inputs: [],
+          name: "BalanceQueryForZeroAddress",
+          type: "error",
+        },
+        {
+          inputs: [],
+          name: "MintERC2309QuantityExceedsLimit",
+          type: "error",
+        },
+        {
+          inputs: [],
+          name: "MintToZeroAddress",
+          type: "error",
+        },
+        {
+          inputs: [],
+          name: "MintZeroQuantity",
+          type: "error",
+        },
+        {
+          inputs: [],
+          name: "OwnerQueryForNonexistentToken",
+          type: "error",
+        },
+        {
+          inputs: [],
+          name: "OwnershipNotInitializedForExtraData",
+          type: "error",
+        },
+        {
+          inputs: [],
+          name: "TransferCallerNotOwnerNorApproved",
+          type: "error",
+        },
+        {
+          inputs: [],
+          name: "TransferFromIncorrectOwner",
+          type: "error",
+        },
+        {
+          inputs: [],
+          name: "TransferToNonERC721ReceiverImplementer",
+          type: "error",
+        },
+        {
+          inputs: [],
+          name: "TransferToZeroAddress",
+          type: "error",
+        },
+        {
+          inputs: [],
+          name: "URIQueryForNonexistentToken",
+          type: "error",
+        },
+        {
+          anonymous: false,
+          inputs: [
+            {
+              indexed: true,
+              internalType: "address",
+              name: "owner",
+              type: "address",
+            },
+            {
+              indexed: true,
+              internalType: "address",
+              name: "approved",
+              type: "address",
+            },
+            {
+              indexed: true,
+              internalType: "uint256",
+              name: "tokenId",
+              type: "uint256",
+            },
+          ],
+          name: "Approval",
+          type: "event",
+        },
+        {
+          anonymous: false,
+          inputs: [
+            {
+              indexed: true,
+              internalType: "address",
+              name: "owner",
+              type: "address",
+            },
+            {
+              indexed: true,
+              internalType: "address",
+              name: "operator",
+              type: "address",
+            },
+            {
+              indexed: false,
+              internalType: "bool",
+              name: "approved",
+              type: "bool",
+            },
+          ],
+          name: "ApprovalForAll",
+          type: "event",
+        },
+        {
+          anonymous: false,
+          inputs: [
+            {
+              indexed: false,
+              internalType: "uint256",
+              name: "_fromTokenId",
+              type: "uint256",
+            },
+            {
+              indexed: false,
+              internalType: "uint256",
+              name: "_toTokenId",
+              type: "uint256",
+            },
+          ],
+          name: "BatchMetadataUpdate",
+          type: "event",
+        },
+        {
+          anonymous: false,
+          inputs: [
+            {
+              indexed: true,
+              internalType: "uint256",
+              name: "fromTokenId",
+              type: "uint256",
+            },
+            {
+              indexed: false,
+              internalType: "uint256",
+              name: "toTokenId",
+              type: "uint256",
+            },
+            {
+              indexed: true,
+              internalType: "address",
+              name: "from",
+              type: "address",
+            },
+            {
+              indexed: true,
+              internalType: "address",
+              name: "to",
+              type: "address",
+            },
+          ],
+          name: "ConsecutiveTransfer",
+          type: "event",
+        },
+        {
+          anonymous: false,
+          inputs: [
+            {
+              indexed: true,
+              internalType: "address",
+              name: "from",
+              type: "address",
+            },
+            {
+              indexed: true,
+              internalType: "address",
+              name: "to",
+              type: "address",
+            },
+            {
+              indexed: true,
+              internalType: "uint256",
+              name: "tokenId",
+              type: "uint256",
+            },
+          ],
+          name: "Transfer",
+          type: "event",
+        },
+        {
+          inputs: [],
+          name: "initENS",
+          outputs: [],
+          stateMutability: "nonpayable",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "uint256",
+              name: "tokenId",
+              type: "uint256",
+            },
+          ],
+          name: "tokenSVG",
+          outputs: [
+            {
+              internalType: "string",
+              name: "",
+              type: "string",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "uint256",
+              name: "tokenId",
+              type: "uint256",
+            },
+          ],
+          name: "tokenURI",
+          outputs: [
+            {
+              internalType: "string",
+              name: "",
+              type: "string",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+      ],
+      inheritedFunctions: {},
+    },
+    WithdrawFacet: {
+      address: "0x7fe920e18A4A73C5d77929e50C4bD9A7290BED8b",
+      abi: [
+        {
+          inputs: [],
+          name: "withdraw",
+          outputs: [],
+          stateMutability: "nonpayable",
           type: "function",
         },
       ],

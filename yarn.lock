@@ -327,15 +327,15 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@ensdomains/ens-contracts@npm:^1.0.1":
-  version: 1.0.1
-  resolution: "@ensdomains/ens-contracts@npm:1.0.1"
+"@ensdomains/ens-contracts@npm:^0.0.20":
+  version: 0.0.20
+  resolution: "@ensdomains/ens-contracts@npm:0.0.20"
   dependencies:
     "@ensdomains/buffer": ^0.1.1
     "@ensdomains/solsha1": 0.0.3
     "@openzeppelin/contracts": ^4.1.0
     dns-packet: ^5.3.0
-  checksum: 6399db1243aa7d1e57242ac298d3fb627717d8d0bb940574df8b55a588d4318b91b1aa4ff2aa3d2de5db20b73d0fc91b4b6fba42e254278b1f51afaff02c37bd
+  checksum: fc6c45b0894d4a3ccd95ea3d00e09e524b1182cf2f98f0f911b2a5ca4ae2fa4c7e9e7a949f4b1938b9dd73666161f31e8029e047b3757280a4279239b300f025
   languageName: node
   linkType: hard
 
@@ -1870,7 +1870,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@se-2/hardhat@workspace:packages/hardhat"
   dependencies:
-    "@ensdomains/ens-contracts": ^1.0.1
+    "@ensdomains/ens-contracts": ^0.0.20
     "@ethersproject/abi": ^5.7.0
     "@ethersproject/providers": ^5.7.1
     "@nomicfoundation/hardhat-chai-matchers": ^2.0.3
